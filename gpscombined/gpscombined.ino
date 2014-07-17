@@ -17,9 +17,18 @@ int sat = 0;
 
 float myLatVal = 0, myLonVal = 0;
 //GPS  vars ---------------------
+//TYPEDEFS ---------------------- 
+typedef struct GPSPacket{  //defines a structure 
+  float Latitude;
+  float Longitude;
+  uint32_t magicNumber; 
+}GPSPacket;
 
+//Object instance creator
 
+GPSPacket newPacket;
 
+//TYPEDEFS ----------------------
 void setup(){
   Serial.begin(9600);
   Serial.flush(); 
@@ -29,8 +38,13 @@ void setup(){
   //xbee.end();
   pinMode(13, OUTPUT); //setup satellites signal
   digitalWrite(13, LOW);     // Turn off the led until a satellite signal
+  
 }
-
+void dumpStruct(GPSPacket* structPointer){
+  Serial.println("Hi");
+  
+  
+}
 void loop(){
   delay(1000);
   if(getGPS(30000)){
@@ -42,7 +56,14 @@ void loop(){
   }else{
     Serial.print("Hmm.. Not quite there \n");
   }
+  if((boolean)myLatVal * myLonVal){ // if (Latitude != 0.0f && Longitude != 0.0f) 
+    newPacket.Latitude = myLatVal;
+    newPacket.Longitude = myLonVal;
+    newPacket.magicNumber = 0x7E57; 
+    dumpStruct(&newPacket);
+  }
 }
+
 boolean getGPS(int timeOutTime){
   float timeMillis = millis();
   gps.flush();
