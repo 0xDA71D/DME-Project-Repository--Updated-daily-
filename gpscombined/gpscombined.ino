@@ -16,6 +16,8 @@ int sat = 0;
 
 
 float myLatVal = 0, myLonVal = 0;
+
+char* GPSPacketByteValue;
 //GPS  vars ---------------------
 //TYPEDEFS ---------------------- 
 typedef struct GPSPacket{  //defines a structure 
@@ -40,11 +42,6 @@ void setup(){
   digitalWrite(13, LOW);     // Turn off the led until a satellite signal
   
 }
-void dumpStruct(GPSPacket* structPointer){
-  Serial.println("Hi");
-  
-  
-}
 void loop(){
   delay(1000);
   if(getGPS(30000)){
@@ -56,12 +53,17 @@ void loop(){
   }else{
     Serial.print("Hmm.. Not quite there \n");
   }
-  if((boolean)myLatVal * myLonVal){ // if (Latitude != 0.0f && Longitude != 0.0f) 
+ /* if((boolean)myLatVal * myLonVal){ // if (Latitude != 0.0f && Longitude != 0.0f) 
     newPacket.Latitude = myLatVal;
     newPacket.Longitude = myLonVal;
     newPacket.magicNumber = 0x7E57; 
-    dumpStruct(&newPacket);
-  }
+    
+    //Malloc
+    GPSPacketByteValue = (char*) malloc(sizeof(newPacket));
+    memcpy(GPSPacketByteValue, &newPacket, sizeof(newPacket));
+    Serial.print(GPSPacketByteValue);
+
+  }*/
 }
 
 boolean getGPS(int timeOutTime){
