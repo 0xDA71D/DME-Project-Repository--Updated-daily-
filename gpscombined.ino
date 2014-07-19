@@ -32,8 +32,13 @@ void setup(){
   pinMode(13, OUTPUT); //setup satellites signal
   digitalWrite(13, LOW);     // Turn off the led until a satellite signal
 <<<<<<< HEAD:gpscombined.ino
+<<<<<<< HEAD:gpscombined.ino
   
 }
+=======
+}
+
+>>>>>>> parent of d1ca6ee... today:gpscombined/gpscombined.ino
 =======
 }
 
@@ -50,6 +55,7 @@ void loop(){
     Serial.print("Hmm.. Not quite there \n");
   }
 <<<<<<< HEAD:gpscombined.ino
+<<<<<<< HEAD:gpscombined.ino
  /* if((boolean)myLatVal * myLonVal){ // if (Latitude != 0.0f && Longitude != 0.0f) 
     newPacket.Latitude = myLatVal;
     newPacket.Longitude = myLonVal;
@@ -61,6 +67,8 @@ void loop(){
     Serial.print(GPSPacketByteValue);
 
   }*/
+=======
+>>>>>>> parent of d1ca6ee... today:gpscombined/gpscombined.ino
 =======
 >>>>>>> parent of d1ca6ee... today:gpscombined/gpscombined.ino
 }
