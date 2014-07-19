@@ -19,18 +19,9 @@ float myLatVal = 0, myLonVal = 0;
 
 char* GPSPacketByteValue;
 //GPS  vars ---------------------
-//TYPEDEFS ---------------------- 
-typedef struct GPSPacket{  //defines a structure 
-  float Latitude;
-  float Longitude;
-  uint32_t magicNumber; 
-}GPSPacket;
 
-//Object instance creator
 
-GPSPacket newPacket;
 
-//TYPEDEFS ----------------------
 void setup(){
   Serial.begin(9600);
   Serial.flush(); 
@@ -40,8 +31,13 @@ void setup(){
   //xbee.end();
   pinMode(13, OUTPUT); //setup satellites signal
   digitalWrite(13, LOW);     // Turn off the led until a satellite signal
+<<<<<<< HEAD:gpscombined.ino
   
 }
+=======
+}
+
+>>>>>>> parent of d1ca6ee... today:gpscombined/gpscombined.ino
 void loop(){
   delay(1000);
   if(getGPS(30000)){
@@ -53,6 +49,7 @@ void loop(){
   }else{
     Serial.print("Hmm.. Not quite there \n");
   }
+<<<<<<< HEAD:gpscombined.ino
  /* if((boolean)myLatVal * myLonVal){ // if (Latitude != 0.0f && Longitude != 0.0f) 
     newPacket.Latitude = myLatVal;
     newPacket.Longitude = myLonVal;
@@ -64,8 +61,9 @@ void loop(){
     Serial.print(GPSPacketByteValue);
 
   }*/
+=======
+>>>>>>> parent of d1ca6ee... today:gpscombined/gpscombined.ino
 }
-
 boolean getGPS(int timeOutTime){
   float timeMillis = millis();
   gps.flush();
